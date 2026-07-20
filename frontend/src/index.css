@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/* =======================================================
+   CODEMENTOR AI — Light Neo-Brutalist System
+   ======================================================= */
+
+:root {
+  --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Soft Warm Beige Canvas */
+  --bg-main: #f7f3e9;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-main: #000000;
+  --text-muted: #555555;
+  --border-dark: #000000;
+
+  /* High-Contrast Accents */
+  --neon-green: #00e659;
+  --neon-cyan: #00d2ff;
+  --neon-yellow: #ffdd00;
+  --neon-pink: #ff2a75;
+  --neon-purple: #9d4edd;
+
+  --shadow-black: 6px 6px 0px #000000;
+  --shadow-lg: 10px 10px 0px #000000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-heading);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+  border-left: 2px solid #000;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neon-yellow);
+  border: 2px solid #000;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Cyber Cards with Balanced 27px Bottom Margin Gap (Reduced by 40%) */
+.cyber-card {
+  background-color: var(--bg-card);
+  border: 2.5px solid #000000;
+  box-shadow: var(--shadow-black);
+  margin-bottom: 27px !important;
+  border-radius: 0px;
+}
+
+.cyber-card-green {
+  background-color: #e6ffed;
+  border: 2.5px solid #000000;
+  box-shadow: var(--shadow-black);
+  margin-bottom: 27px !important;
+}
+
+.cyber-card-cyan {
+  background-color: #e6f9ff;
+  border: 2.5px solid #000000;
+  box-shadow: var(--shadow-black);
+  margin-bottom: 27px !important;
+}
+
+.cyber-card-yellow {
+  background-color: #fffde6;
+  border: 2.5px solid #000000;
+  box-shadow: var(--shadow-black);
+  margin-bottom: 27px !important;
+}
+
+.cyber-card-pink {
+  background-color: #ffe6ee;
+  border: 2.5px solid #000000;
+  box-shadow: var(--shadow-black);
+  margin-bottom: 27px !important;
+}
+
+/* Neo-Brutalist Buttons */
+.cyber-btn {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  padding: 0.75rem 1.4rem;
+  background-color: #ffffff;
+  color: #000000;
+  border: 2.5px solid #000000;
+  box-shadow: var(--shadow-black);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  user-select: none;
+  text-transform: uppercase;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+}
+
+.cyber-btn:hover:not(:disabled) {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cyber-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.cyber-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Button Variants */
+.cyber-btn-green { background-color: var(--neon-green); color: #000000; }
+.cyber-btn-cyan { background-color: var(--neon-cyan); color: #000000; }
+.cyber-btn-yellow { background-color: var(--neon-yellow); color: #000000; }
+.cyber-btn-pink { background-color: var(--neon-pink); color: #ffffff; }
+
+/* Neo-Brutalist Inputs */
+.cyber-input {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  padding: 0.85rem 1.2rem;
+  background-color: #ffffff;
+  color: #000000;
+  border: 2.5px solid #000000;
+  box-shadow: var(--shadow-black);
+  outline: none;
+  width: 100%;
+}
+
+.cyber-input:focus {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Badges */
+.cyber-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cyber-badge-green { background: var(--neon-green); color: #000000; }
+.cyber-badge-cyan { background: var(--neon-cyan); color: #000000; }
+.cyber-badge-yellow { background: var(--neon-yellow); color: #000000; }
+.cyber-badge-pink { background: var(--neon-pink); color: #ffffff; }
+.cyber-badge-purple { background: var(--neon-purple); color: #ffffff; }
