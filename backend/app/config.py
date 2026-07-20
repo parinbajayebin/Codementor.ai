@@ -80,25 +80,24 @@ class Settings(BaseSettings):
     # Number of similar chunks to retrieve
     top_k: int = 5
 
-    # CORS allowed origins
-    allowed_origins: list[str] = ["http://localhost:5173", "http://localhost:3000"]
+    # CORS allowed origins (accepts comma-separated string, wildcard *, or list)
+    allowed_origins: str = "*"
 
-    @field_validator("allowed_origins", mode="before")
-    @classmethod
-    def parse_allowed_origins(cls, value):
-        """Parse comma-separated string, JSON string, or list into list[str]."""
-        if isinstance(value, str):
-            value = value.strip()
-            if not value:
-                return ["*"]
-            if value.startswith("[") and value.endswith("]"):
-                import json
-                try:
-                    return json.loads(value)
-                except Exception:
-                    pass
-            return [origin.strip() for origin in value.split(",") if origin.strip()]
-        return value
+    @property
+    def cors_origins(self) -> list[str]:
+        """Parse allowed_origins string into a clean list of origins for CORS middleware."""
+        val = str(self.allowed_origins).strip()
+        if not val or val == "*":
+            return ["*"]
+        if val.startswith("[") and val.endswith("]"):
+            import json
+            try:
+                parsed = json.loads(val)
+                if isinstance(parsed, list):
+                    return [str(x).strip() for x in parsed if str(x).strip()]
+            except Exception:
+                pass
+        return [origin.strip() for origin in val.split(",") if origin.strip()]
 
     @field_validator("openrouter_api_key")
     @classmethod
