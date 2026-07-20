@@ -83,6 +83,23 @@ class Settings(BaseSettings):
     # CORS allowed origins
     allowed_origins: list[str] = ["http://localhost:5173", "http://localhost:3000"]
 
+    @field_validator("allowed_origins", mode="before")
+    @classmethod
+    def parse_allowed_origins(cls, value):
+        """Parse comma-separated string, JSON string, or list into list[str]."""
+        if isinstance(value, str):
+            value = value.strip()
+            if not value:
+                return ["*"]
+            if value.startswith("[") and value.endswith("]"):
+                import json
+                try:
+                    return json.loads(value)
+                except Exception:
+                    pass
+            return [origin.strip() for origin in value.split(",") if origin.strip()]
+        return value
+
     @field_validator("openrouter_api_key")
     @classmethod
     def must_not_be_empty(cls, value: str, info) -> str:
